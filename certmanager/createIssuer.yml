@@ -1,11 +1,8 @@
-apiVersion: certmanager.k8s.io/v1
-kind: ClusterIssuer
+apiVersion: cert-manager.io/v1
+kind: Issuer
 metadata:
-  name: letsencrypt
+  name: ca-issuer
+  namespace: mesh-system
 spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: <your email> # CHANGE_YOUR_EMAIL_HERE
-    privateKeySecretRef:
-      name: letsencrypt
-    http01: {}
+  ca:
+    secretName: <ca-key-pair> # Change by CA key pair
